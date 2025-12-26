@@ -28,7 +28,7 @@ function setDelay(difficulty) {
 
 let lasthole = null;
 function chooseHole(holes) {
-  const index = randomInteger(0, 9);
+  const index = randomInteger(0, 8);
   const hole = holes[index];
   if (hole === lastHole) {
     return chooseHole(holes);
@@ -42,11 +42,10 @@ function gameOver() {
   let timeoutId = showUp();
   return timeoutId;
   } else {
-  gameStopped = stopGame();
+  let gameStopped = stopGame();
   return gameStopped;
   }
 }
-
 
 function showUp() {
   let delay = setDelay(difficulty);
@@ -56,7 +55,7 @@ function showUp() {
 
 
 function showAndHide(hole, delay){
-toggleVisibility(hole);   
+  toggleVisibility(hole);   
   const timeoutID = setTimeout(() => {
     toggleVisibility(hole);    
     gameOver();
@@ -70,82 +69,44 @@ function toggleVisibility(hole){
   return hole;
 }
 
-/**
-*
-* This function increments the points global variable and updates the scoreboard.
-* Use the `points` global variable that is already defined and increment it by 1.
-* After the `points` variable is incremented proceed by updating the scoreboard
-* that you defined in the `index.html` file. To update the scoreboard you can use 
-* `score.textContent = points;`. Use the comments in the function as a guide 
-* for your implementation:
-*
-*/
 function updateScore() {
-  // TODO: Write your code here
-
+  points += 1;
+  score.textContent = points;
   return points;
 }
 
-/**
-*
-* This function clears the score by setting `points = 0`. It also updates
-* the board using `score.textContent = points`. The function should return
-* the points.
-*
-*/
+
 function clearScore() {
-  // TODO: Write your code here
-  // points = 0;
-  // score.textContent = points;
+  points = 0;
+  score.textContent = points;
   return points;
 }
 
-/**
-*
-* Updates the control board with the timer if time > 0
-*
-*/
 function updateTimer() {
-  // TODO: Write your code here.
-  // hint: this code is provided to you in the instructions.
-  
+  if (time > 0){
+    time -= 1;
+    timerDisplay.textContent = time;
+  }
   return time;
 }
 
-/**
-*
-* Starts the timer using setInterval. For each 1000ms (1 second)
-* the updateTimer function get called. This function is already implemented
-*
-*/
+
 function startTimer() {
-  // TODO: Write your code here
-  // timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 1000);
   return timer;
 }
 
-/**
-*
-* This is the event handler that gets called when a player
-* clicks on a mole. The setEventListeners should use this event
-* handler (e.g. mole.addEventListener('click', whack)) for each of
-* the moles.
-*
-*/
+
 function whack(event) {
-  // TODO: Write your code here.
-  // call updateScore()
+  updateScore()
   return points;
 }
 
-/**
-*
-* Adds the 'click' event listeners to the moles. See the instructions
-* for an example on how to set event listeners using a for loop.
-*/
-function setEventListeners(){
-  // TODO: Write your code here
 
+function setEventListeners(){
+   moles.forEach(
+    mole => mole.addEventListener('click', whack)
+  );
   return moles;
 }
 
