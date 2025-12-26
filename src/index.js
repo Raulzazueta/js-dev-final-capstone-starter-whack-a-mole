@@ -20,12 +20,12 @@ function setDelay(difficulty) {
     return 1500;
   }  if (difficulty === "normal") {
     return 1000;
-  } if (difficulty === "hard") {
+  } if (difficulty === "hard") { // setting range for hard difficulty
  return Math.floor(Math.random() * (1200 - 600 + 1)) + 600;
   } 
 }
 
-
+// to avoid the same hole being chosen twice in a row
 let lasthole = null;
 function chooseHole(holes) {
   const index = randomInteger(0, 8);
@@ -77,7 +77,7 @@ function updateScore() {
 
 
 function clearScore() {
-  points = 0;
+  points = 0; // reset points to zero
   score.textContent = points;
   return points;
 }
@@ -92,7 +92,7 @@ function updateTimer() {
 
 
 function startTimer() {
-  timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 1000); // update timer every second startign at 1000 ms or 10 seconds
   return timer;
 }
 
@@ -101,7 +101,7 @@ function whack(event) {
   updateScore()
   return points;
 }
-
+// add event listeners to all moles and will refer back to this function when clicked
 
 function setEventListeners(){
    moles.forEach(
@@ -126,6 +126,11 @@ function stopGame(){
   // stopAudio(song);  //optional
   clearInterval(timer);
   return "game stopped";
+}
+
+function playWhack() {
+  const sound = new Audio('../assets/molesong.mp3');
+  sound.play();
 }
 
 function startGame(){
