@@ -15,7 +15,6 @@ function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 function setDelay(difficulty) {
   if (difficulty === "easy") {
     return 1500;
@@ -26,20 +25,7 @@ function setDelay(difficulty) {
   } 
 }
 
-/**
- * Chooses a random hole from a list of holes.
- *
- * This function should select a random Hole from the list of holes.
- * 1. generate a random integer from 0 to 8 and assign it to an index variable
- * 2. get a random hole with the random index (e.g. const hole = holes[index])
- * 3. if hole === lastHole then call chooseHole(holes) again.
- * 4. if hole is not the same as the lastHole then keep track of 
- * it (lastHole = hole) and return the hole
- *
- * Example: 
- * const holes = document.querySelectorAll('.hole');
- * chooseHole(holes) //> returns one of the 9 holes that you defined
- */
+
 let lasthole = null;
 function chooseHole(holes) {
   const index = randomInteger(0, 9);
@@ -50,7 +36,8 @@ function chooseHole(holes) {
   lastHole = hole;
   return hole;
 }
-
+console.log(chooseHole(holes));
+console.log(chooseHole(holes));
 /**
 *
 * Calls the showUp function if time > 0 and stops the game if time = 0.
