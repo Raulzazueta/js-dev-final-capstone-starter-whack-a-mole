@@ -128,11 +128,6 @@ function stopGame(){
   return "game stopped";
 }
 
-function playWhack() {
-  const sound = new Audio('../assets/molesong.mp3');
-  sound.play();
-}
-
 function startGame(){
   clearScore();
   stopGame();   
