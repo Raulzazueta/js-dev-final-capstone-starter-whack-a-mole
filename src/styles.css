@@ -16,7 +16,7 @@ h1 {
   font-family: "arial black", sans-serif;
   color: rgb(74, 17, 17);
   -webkit-text-stroke: 2px black;
-  /** this added effect adds to the font making it more spooky and grim when you look at it **/
+  //** this added effect adds to the font making it more spooky and grim when you look at it **/
   -webkit-box-reflect: below 1px linear-gradient(to bottom, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.5))
 }
 
@@ -42,7 +42,6 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  cursor: url('./assets/mallet.png'), pointer;
 }
 
 .hole {
