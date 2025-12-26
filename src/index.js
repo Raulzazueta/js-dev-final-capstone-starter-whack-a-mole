@@ -110,12 +110,7 @@ function setEventListeners(){
   return moles;
 }
 
-/**
-*
-* This function sets the duration of the game. The time limit, in seconds,
-* that a player has to click on the sprites.
-*
-*/
+
 function setDuration(duration) {
   time = duration;
   return time;
